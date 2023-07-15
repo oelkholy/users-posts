@@ -11,7 +11,8 @@ import { Post } from '../../models/post.model';
 })
 export class HomeComponent implements OnInit {
 
-  userPosts$: Observable<Post[]>
+  userPosts$: Observable<Post[]>;
+  postCharactersLength = 150
 
   constructor(
     public userService: UserService,

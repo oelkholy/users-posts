@@ -14,7 +14,12 @@
                 </div>
                 <div class="card-body mt-8">
                     <p class="desc fs-14">
-                        {{ post.body }}
+                        {{ post.showAllText ? post.body : post.body | limitCharacters: postCharactersLength }}
+                        <a (click)="post.showAllText = true"
+                            *ngIf="post.body.length > postCharactersLength && !post.showAllText" 
+                            class="text-decoration-none text-grey fs-14 cursor-pointer text-secondary">
+                            See more
+                        </a>
                     </p>
                     <img class="post-img cursor-pointer w-100" loading="lazy" src="/assets/images/post.jpg"
                         alt="post_img">
