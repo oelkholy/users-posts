@@ -1,1 +1,19 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-light bg-light w-100">
+    <div class="container justify-content-center">
+        <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+            <button
+                type="button"
+                class="btn btn-outline-secondary"
+                id="usersDropdown"
+                ngbDropdownAnchor
+                (focus)="myDrop.open()"
+            >
+                <img width="30" height="30" src="../../../../assets/images/user-dummy.webp" loading="lazy" alt="dummy-user">
+                {{ (selectedUser$ | async)?.username || 'Users List' }}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="usersDropdown">
+                <button (click)="onSelectUser(user)" *ngFor="let user of usersList$ | async" ngbDropdownItem>{{ user.username }}</button>
+            </div>
+        </div>
+    </div>
+  </nav>
