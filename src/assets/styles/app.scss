@@ -4,7 +4,7 @@
 @import "base/mixins";
 
 // 2. Components
-@import "components/card";
+@import "components/cards";
 @import "components/comments";
 @import "components/navbar";
 
@@ -16,3 +16,6 @@
 @import "utilities/fontWeight";
 @import "utilities/margin";
 @import "utilities/padding";
+
+// 5. Global
+@import "global/global";

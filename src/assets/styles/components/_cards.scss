@@ -1,0 +1,24 @@
+.post-card {
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    width: 600px;
+    max-width: 100%;
+    background-color: #fff;
+
+    .card-body {
+        .post-img {
+            max-height: 400px;
+        }
+    }
+
+    .card-footer {
+        .action-buttons > div {
+            border-radius: 4px;
+            transition: all .3s;
+
+            &:hover {
+                background-color: #00000014;
+            }
+        }
+    }
+}

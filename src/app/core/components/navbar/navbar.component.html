@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light w-100">
+<nav class="navbar navbar-light shadow-sm w-100 mb-20">
     <div class="container justify-content-center">
         <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
             <button
@@ -9,7 +9,7 @@
                 (focus)="myDrop.open()"
             >
                 <img width="30" height="30" src="../../../../assets/images/user-dummy.webp" loading="lazy" alt="dummy-user">
-                {{ (selectedUser$ | async)?.username || 'Users List' }}
+                {{ (userService.selectedUser$ | async)?.username || 'Users List' }}
             </button>
             <div ngbDropdownMenu aria-labelledby="usersDropdown">
                 <button (click)="onSelectUser(user)" *ngFor="let user of usersList$ | async" ngbDropdownItem>{{ user.username }}</button>

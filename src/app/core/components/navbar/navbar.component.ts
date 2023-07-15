@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
@@ -13,20 +13,18 @@ import { UserService } from '../../services/user.service';
 export class NavbarComponent implements OnInit {
 
   usersList$: Observable<User[]>
-  selectedUser$: BehaviorSubject<User | null>
 
   constructor(
     private apiService: ApiService,
-    private userService: UserService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.selectedUser$ = this.userService.selectedUser$;
     this.getUsersList();
   }
 
   getUsersList() {
-    this.usersList$ = this.apiService.get('users');
+    this.usersList$ = this.apiService.get<User[]>('users');
   }
 
   onSelectUser(user: User) {
