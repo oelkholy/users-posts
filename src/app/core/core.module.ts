@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { SharedModule } from '../shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -13,15 +13,13 @@ import { HttpClientModule } from '@angular/common/http'
     LayoutComponent
   ],
   imports: [
-    AppRoutingModule,
-    BrowserModule,
-    CommonModule,
-    HttpClientModule
+    SharedModule,
+    AppRoutingModule
   ],
   exports: [
     AppRoutingModule,
     BrowserModule,
-    CommonModule
+    NgbModule
   ]
 })
 export class CoreModule { }
