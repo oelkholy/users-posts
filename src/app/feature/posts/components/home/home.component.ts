@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.userPosts$ = this.userService.selectedUser$
       .pipe(
         filter(user => !!user),
-        distinctUntilChanged(), // Prevent duplicate Api requests while clicking on the same user (Caching also can fix)
+        distinctUntilChanged(), // Prevent duplicate Api requests while clicking on the same user (Caching also can fix).
         switchMap(user => this.getUserPosts(user!)),
       )
   }
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     return this.apiService
       .get<Post[]>(`posts?userId=${user?.id}`)
       .pipe(
-        delay(150),
+        delay(150), // This delay is just to show the loading effect cause the api is so fast while getting data.
         finalize(()=> this.isLoading.next(false))
       )
   }
