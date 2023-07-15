@@ -1,0 +1,18 @@
+// 1. base
+@import "base/colors";
+@import "base/fonts";
+@import "base/mixins";
+
+// 2. Components
+@import "components/card";
+@import "components/comments";
+@import "components/navbar";
+
+// 3. pages
+@import "pages/posts";
+
+// 4. utilities
+@import "utilities/fontSize";
+@import "utilities/fontWeight";
+@import "utilities/margin";
+@import "utilities/padding";
