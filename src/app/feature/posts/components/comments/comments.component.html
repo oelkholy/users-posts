@@ -1,1 +1,58 @@
-<p>comments works!</p>
+<div class="comments-modal">
+    <div class="modal-header">
+        <h4 class="modal-title">Comments</h4>
+        <button (click)="closeModal()" type="button" class="btn-close shadow-none" aria-label="Close"></button>
+    </div>
+    <div class="modal-body py-0" style="max-height: 55vh;">
+    
+        <!-- START Comments Loader -->
+        <div *ngIf="!(comments$ | async); else comments">
+            <div *ngFor="let item of [1,2,3]" class="card mb-4" aria-hidden="true">
+                <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-6"></span>
+                        <span class="placeholder col-8"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- END Comments Loader -->
+    
+        <!-- START Comments Section -->
+        <ng-template #comments>
+            <div *ngFor="let comment of comments$ | async" class="comment-container d-flex my-16"
+                style="border-bottom: 1px solid #dee2e6;">
+                <div class="img">
+                    <img width="30" height="30" src="assets/images/user-dummy.webp" alt="user_img">
+                </div>
+                <div class="info mx-8">
+                    <span class="fw-bold">{{ comment.email }}</span>
+                    <p class="mt-6 mb-0">
+                        {{ comment.showAllText ? comment.body : comment.body | limitCharacters: 100 }}
+                        <a (click)="comment.showAllText = true"
+                            *ngIf="comment.body.length > 100 && !comment.showAllText"
+                            class="text-decoration-none text-grey fs-14 cursor-pointer text-secondary">
+                            See more
+                        </a>
+                    </p>
+                    <div class="action-btns mb-14 text-secondary fw-bold">
+                        <span class="cursor-pointer fs-12 me-8">Like</span>
+                        <span class="cursor-pointer fs-12 me-8">Reply</span>
+                        <span class="cursor-pointer fs-12 me-8">Share</span>
+                        <span class="cursor-pointer fs-12 me-8">17h</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <!-- END Comments Section -->
+    </div>
+    <div class="modal-footer">
+        <button (click)="closeModal()" type="button" class="btn btn-outline-dark">Close</button>
+    </div>
+</div>

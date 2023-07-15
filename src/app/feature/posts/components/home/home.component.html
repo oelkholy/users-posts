@@ -54,7 +54,8 @@
                                 </svg>
                                 <span class="fs-14 mx-6 d-none d-sm-inline-block">Like</span>
                             </div>
-                        <div class="comments-btn d-flex justify-content-center flex-grow-1 mx-12 py-10 cursor-pointer">
+                        <div (click)="onClickComment(post.id)" 
+                            class="comments-btn d-flex justify-content-center flex-grow-1 mx-12 py-10 cursor-pointer">
                                 <svg width="20px" height="20px" viewBox="0 0 32 32" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -88,3 +89,8 @@
     </section>
 </ng-template>
 <!-- END Posts Section -->
+
+<!-- Comments Modal -->
+<ng-template #commentsModal let-modal>
+    <app-comments [postId]="postId"></app-comments>
+</ng-template>
