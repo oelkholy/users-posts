@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, delay, shareReplay } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { Comment } from '../../models/comment.model';
 
@@ -27,7 +27,6 @@ export class CommentsComponent implements OnInit {
     this.comments$ = this.apiService
       .get<Comment[]>(`comments?postId=${this.postId}`)
       .pipe(
-        delay(300),
         shareReplay()
       )
   }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, delay, distinctUntilChanged, filter, finalize, shareReplay, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, distinctUntilChanged, filter, finalize, shareReplay, switchMap } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { Post } from '../../models/post.model';
@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
     return this.apiService
       .get<Post[]>(`posts?userId=${user?.id}`)
       .pipe(
-        delay(150), // This delay is just to show the loading effect cause the api is so fast while getting data.
         finalize(()=> this.isLoading.next(false))
       )
   }
