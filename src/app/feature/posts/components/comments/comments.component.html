@@ -4,29 +4,10 @@
         <button (click)="closeModal()" type="button" class="btn-close shadow-none" aria-label="Close"></button>
     </div>
     <div class="modal-body py-0" style="max-height: 55vh;">
-    
-        <!-- START Comments Loader -->
-        <div *ngIf="!(comments$ | async); else comments">
-            <div *ngFor="let item of [1,2,3]" class="card mb-4" aria-hidden="true">
-                <div class="card-body">
-                    <h5 class="card-title placeholder-glow">
-                        <span class="placeholder col-6"></span>
-                    </h5>
-                    <p class="card-text placeholder-glow">
-                        <span class="placeholder col-7"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-6"></span>
-                        <span class="placeholder col-8"></span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- END Comments Loader -->
-    
+
         <!-- START Comments Section -->
-        <ng-template #comments>
-            <div *ngFor="let comment of comments$ | async" class="comment-container d-flex my-16"
+        <div *ngIf="(comments$ | async) as comments; else commentsSkeleton">
+            <div *ngFor="let comment of comments" class="comment-container d-flex my-16"
                 style="border-bottom: 1px solid #dee2e6;">
                 <div class="img">
                     <img width="30" height="30" src="assets/images/user-dummy.webp" alt="user_img">
@@ -49,8 +30,27 @@
                     </div>
                 </div>
             </div>
-        </ng-template>
+        </div>
         <!-- END Comments Section -->
+
+        <!-- START Comments Skeleton -->
+        <ng-template #commentsSkeleton>
+            <div *ngFor="let item of [1,2,3]" class="card mb-4" aria-hidden="true">
+                <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-6"></span>
+                        <span class="placeholder col-8"></span>
+                    </p>
+                </div>
+            </div>
+        </ng-template>
+        <!-- END Comments Skeleton -->
     </div>
     <div class="modal-footer">
         <button (click)="closeModal()" type="button" class="btn btn-outline-dark">Close</button>
