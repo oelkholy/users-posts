@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should get user post if there is any selected user', () => {
+  it('should get user post if there is any selected user', () => {
     const user: User = USERDATA;
     const userService = new UserService();
     userService.selectedUser$.next(user);
