@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, shareReplay } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
@@ -7,7 +7,8 @@ import { Comment } from '../../models/comment.model';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  styleUrls: ['./comments.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentsComponent implements OnInit {
 
